@@ -1,0 +1,35 @@
+.filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%; 
+  margin: 50px auto;
+}
+
+.button {
+  border-radius: 10px;
+  border: 3px solid white;
+  font-family: inherit;
+  background-color: indigo;
+  cursor: pointer;
+  transition: border-color 1s, background-color 1s, color 1s, border 1s;
+  text-decoration: none; 
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.button:hover {
+  background-color: indigo; 
+  color: deepskyblue; 
+  border: 3px solid  deepskyblue; 
+}
+
+.button:focus,
+.button:focus-visible {
+  background-color: deepskyblue; 
+  color: black; 
+  border: 3px solid  black; 
+  text-align: left;
+}

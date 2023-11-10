@@ -19,18 +19,21 @@ fs.readdirSync(path.join(__dirname, '/models'))
   .forEach((file) => {
     modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
-
 modelDefiners.forEach(model => model(sequelize));
 
 let entries = Object.entries(sequelize.models);
 console.log(entries);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
+console.log(capsEntries);
 sequelize.models = Object.fromEntries(capsEntries);
+console.log(sequelize.models);
 
-const { Country } = sequelize.models;
 
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
+const {Activity, Country} = sequelize.models;
+
+Country.belongsToMany(Activity, {through: "CountryActivity"});
+Activity.belongsToMany(Country, {through: "CountryActivity"});
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
